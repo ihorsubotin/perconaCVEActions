@@ -17,6 +17,7 @@ jobs:
         run: |
           matrix=${{toJSON(fromJson(steps.getdata.outputs.content).results)}}
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
+          echo "hello"
   trivy-testing:
     name: Testing repositries on Trivy
     needs: tags-generation
