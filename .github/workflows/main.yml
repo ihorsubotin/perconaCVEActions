@@ -12,7 +12,11 @@ jobs:
         run: |
            content=`curl "https://hub.docker.com/v2/repositories/library/percona/tags/?page_size=5&name&ordering"`
            echo "content=$content" >> $GITHUB_OUTPUT
-
+      - name: Set dynamic matrix
+        id: setmatrix
+        run: |
+          matrix=${{toJSON(fromJson(steps.getdata.outputs.content).results)}}
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
   trivy-testing:
     name: Testing repositries on Trivy
     needs: tags-generation
