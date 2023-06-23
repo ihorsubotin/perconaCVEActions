@@ -10,7 +10,7 @@ jobs:
       - name: Get data from docker hub
         id: getdata
         run: |
-           content=`curl https://hub.docker.com/v2/repositories/library/percona/tags/?page_size=5&name&ordering`
+           content=`curl "https://hub.docker.com/v2/repositories/library/percona/tags/?page_size=5&name&ordering"`
            echo $content
            echo "content=$content" >> $GITHUB_OUTPUT
       - name: Set dynamic matrix
