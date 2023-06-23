@@ -14,6 +14,7 @@ jobs:
            echo "{matrix}={$matrixStringifiedObject}" >> $GITHUB_OUTPUT
   trivy-testing:
     name: Testing repositries on Trivy
+    needs: tags-generation
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{fromJson(needs.tags-generation.outputs.matrix) }}
