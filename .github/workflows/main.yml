@@ -11,7 +11,7 @@ jobs:
         id: setmatrix
         run: |
            matrixStringifiedObject="{\"include\":[{\"name\":\"ps-8.0.33-25\"},{\"name\":\"8.0-centos\"}]}"
-           run: echo "{matrix}={$matrixStringifiedObject}" >> $GITHUB_OUTPUT
+           echo "{matrix}={$matrixStringifiedObject}" >> $GITHUB_OUTPUT
   trivy-testing:
     name: Testing repositries on Trivy
     runs-on: ubuntu-latest
