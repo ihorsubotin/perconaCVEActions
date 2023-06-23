@@ -21,7 +21,7 @@ jobs:
     needs: tags-generation
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{fromJson(needs.tags-generation.outputs.matrix) }}
+      matrix: ${{needs.tags-generation.outputs.matrix}}
     steps:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
