@@ -14,7 +14,8 @@ jobs:
            #echo "::set-output name=matrix::$content";
            #results=`echo $content | jq -j ".results"`
            #echo $results
-           results='[{name: "hello"}, {name: "213"}]'
+           results="{\"include\":[{\"name\":\"ps-8.0.33-25\"},{\"name\":\"8.0-centos\"}]}"
+           #results='[{name: "hello"}, {name: "213"}]'
            echo $results
            echo "::set-output name=matrix::$results"
   trivy-testing:
