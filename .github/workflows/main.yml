@@ -8,10 +8,11 @@ jobs:
       matrix: ${{ steps.setmatrix.outputs.matrix }}
     steps:
       - name: Set Dynamic Matrix
-        id: setmatrix
+        id: getdata
         run: |
-           matrixStringifiedObject="{\"include\":[{\"name\":\"ps-8.0.33-25\"},{\"name\":\"8.0-centos\"}]}"
-           echo "::set-output name=matrix::$matrixStringifiedObject"
+           content=`curl https://hub.docker.com/v2/repositories/library/percona/tags/?page_size=5&name&ordering`
+           echo content
+           echo "matrix=${{fromJson(content).result}}" >> $GITHUB_OUTPUT
   trivy-testing:
     name: Testing repositries on Trivy
     needs: tags-generation
