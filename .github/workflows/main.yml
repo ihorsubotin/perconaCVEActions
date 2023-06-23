@@ -15,7 +15,7 @@ jobs:
            echo $results
            $EOF="$$"
            echo "text<<$EOF" >> $GITHUB_OUTPUT
-           echo "$message" >> $GITHUB_OUTPUT
+           echo "$results" >> $GITHUB_OUTPUT
            echo "$EOF" >> $GITHUB_OUTPUT
   trivy-testing:
     name: Testing repositries on Trivy
