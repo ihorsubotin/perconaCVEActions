@@ -15,13 +15,13 @@ jobs:
       - name: Set dynamic matrix
         id: setmatrix
         run: |
-          echo "matrix=${{fromJson(steps.getdata.outputs.content).results}}" >> $GITHUB_OUTPUT;
+          echo 'matrix=${{toJSON(fromJson(steps.getdata.outputs.content).results)}}' >> $GITHUB_OUTPUT;
   trivy-testing:
     name: Testing repositries on Trivy
     needs: tags-generation
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{needs.tags-generation.outputs.matrix}}
+      matrix: ${{fromJson(needs.tags-generation.outputs.matrix)}}
     steps:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
