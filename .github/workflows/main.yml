@@ -13,7 +13,10 @@ jobs:
            content=`curl "https://hub.docker.com/v2/repositories/library/percona/tags/?page_size=5&name&ordering"`
            results=`echo $content | jq -j ".results"`
            echo $results
-           echo "matrix=$results" >> $GITHUB_OUTPUT
+           $EOF="$$"
+           echo "text<<$EOF" >> $GITHUB_OUTPUT
+           echo "$message" >> $GITHUB_OUTPUT
+           echo "$EOF" >> $GITHUB_OUTPUT
   trivy-testing:
     name: Testing repositries on Trivy
     needs: tags-generation
