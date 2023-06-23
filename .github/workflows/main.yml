@@ -14,7 +14,7 @@ jobs:
            #echo "::set-output name=matrix::$content";
            #results=`echo $content | jq -j ".results"`
            #echo $results
-           results = '[{name: "hello"}, {name: "213"}]'
+           results='[{name: "hello"}, {name: "213"}]'
            echo $results
            echo "::set-output name=matrix::$results"
   trivy-testing:
