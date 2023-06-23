@@ -1,0 +1,16 @@
+name: Percona CVE Actions
+on: workflow_dispatch
+jobs:
+  trivy:
+    name: Testing code on Trivy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'percona:ps-8.0.33-25'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
