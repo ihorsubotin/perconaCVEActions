@@ -15,8 +15,8 @@ jobs:
       - name: Set dynamic matrix
         id: setmatrix
         run: |
-          echo ${{fromJson(steps.getdata.outputs.content).results}}
-          echo "matrix=${{fromJson(steps.getdata.outputs.content).results}}" >> $GITHUB_OUTPUT
+          echo ${{toJSON(fromJson(steps.getdata.outputs.content).results)}}
+          echo "matrix=${{toJSON(fromJson(steps.getdata.outputs.content).results)}}" >> $GITHUB_OUTPUT
   trivy-testing:
     name: Testing repositries on Trivy
     needs: tags-generation
