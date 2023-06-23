@@ -11,7 +11,7 @@ jobs:
         id: setmatrix
         run: |
            matrixStringifiedObject="{\"include\":[{\"name\":\"ps-8.0.33-25\"},{\"name\":\"8.0-centos\"}]}"
-           echo "{matrix}={$matrixStringifiedObject}" >> $GITHUB_OUTPUT
+           echo "::set-output name=matrix::$matrixStringifiedObject"
   trivy-testing:
     name: Testing repositries on Trivy
     needs: tags-generation
