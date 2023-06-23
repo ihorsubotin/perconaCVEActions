@@ -1,5 +1,9 @@
 name: Percona CVE Actions
-on: workflow_dispatch
+on: 
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
 jobs:
   tags-generation:
     name: Generating versions list
