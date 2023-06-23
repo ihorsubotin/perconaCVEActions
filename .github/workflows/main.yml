@@ -11,11 +11,11 @@ jobs:
         id: setmatrix
         run: |
            content=`curl "https://hub.docker.com/v2/repositories/library/percona/tags/?page_size=5&name&ordering"`
-           results=`echo $content | jq -j ".results"`
-           #matrix="{\"include\":$results}"
+           results=`echo $content | jq -j '."results"[]["name"]'`
+           matrix="{\"include\":$results}"
            #echo $results
            #matrix="{\"include\":[{\"name\":\"ps-8.0.33-25\"},{\"name\":\"8.0-centos\"}]}"
-           matrix="{\"include\":[ { \"value\": 123, \"name\": \"ps-8.0.33-25\" }, { \"name\": \"8.0-centos\" }]}"
+           #matrix="{\"include\":[ { \"value\": 123, \"name\": \"ps-8.0.33-25\" }, { \"name\": \"8.0-centos\" }]}"
            #results='[{name: "hello"}, {name: "213"}]'
            echo $matrix
            echo "::set-output name=matrix::$matrix"
