@@ -11,7 +11,7 @@ jobs:
         id: setmatrix
         run: |
            content=`curl "https://hub.docker.com/v2/repositories/library/percona/tags/?page_size=5&name&ordering"`
-           results=`echo $content | jq -j '."results"[]["name"]'`
+           results=`echo $content | jq -j '."results"'`
            matrix="{\"include\":$results}"
            #echo $results
            #matrix="{\"include\":[{\"name\":\"ps-8.0.33-25\"},{\"name\":\"8.0-centos\"}]}"
